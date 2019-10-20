@@ -1,0 +1,42 @@
+list2str
+命令：''.join(list)
+其中，引号中是字符之间的分割符，如“,”，“;”，“\t”等等
+如：
+list = ['1', '2', '3', '4', '5']
+''.join(list) 结果即为：12345
+','.join(list) 结果即为：1,2,3,4,5
+假如list中元素为整型，需要使用str()转换为字符串类型
+如：
+list = [1, 2, 3, 4, 5]
+''.join([str(x) for x in list]) 结果为：12345
+
+str2list
+print list('12345')
+
+输出： ['1', '2', '3', '4', '5']
+
+
+print list(map(int, '12345'))
+
+输出： [1, 2, 3, 4, 5]
+
+
+
+str2 = "123 sjhid dhi" 
+
+list2 = str2.split() #or 
+list2 = str2.split(" ") 
+
+print list2 
+
+['123', 'sjhid', 'dhi']
+
+
+
+str3 = "www.google.com" 
+
+list3 = str3.split(".") 
+
+print list3 
+
+['www', 'google', 'com']
