@@ -102,7 +102,8 @@ class Solution:
             low = first
             high = last
 
-            # 经过循环，low应该等于high，也就是
+            # 经过循环，low应该等于high，也就是该位置的值是重复的。
+            # 所以再将基准值放在该位置，接着继续将两边的序列递归调用函数进行排序
             while low < high:
                 while low < high and new_ls[high] >= mid_value:
                     high -= 1
