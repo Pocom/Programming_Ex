@@ -21,5 +21,24 @@ class Solution:
         return ret
 
 
+# class Solution:
+#     def generate(self, numRows: int) -> List[List[int]]:
+#         if numRows == 0: return []
+#
+#         ret = [[1]]
+#         if numRows == 1: return ret
+#
+#         for _ in range(numRows - 1):
+#             last_line = ret[-1]
+#             new_line = [1]
+#
+#             for i in range(len(last_line[:-1])):
+#                 new_line.append(last_line[i] + last_line[i + 1])
+#             new_line.append(1)
+#
+#             ret.append(new_line)
+#
+#         return ret
+
 t = Solution()
 print(t.generate(4))
