@@ -1,6 +1,3 @@
-from typing import List
-
-
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -8,28 +5,25 @@ class TreeNode:
         self.left = None
         self.right = None
 
-
 class Solution:
     def generateTrees(self, n: int) -> List[TreeNode]:
-        res = [] * (n + 1)
-        if n == 0: return res[0]
 
-        for i in range(1, n + 1):
-            res[i] = TreeNode(0)
-            for j in range(i):
-                for nodeL in res[j]:
-                    for nodeR in res[i - j - 1]:
-                        node = TreeNode(j + 1)
-                        node.left = nodeL
-                        node.right = self.clone(nodeR, j + 1)
-                        res[i].append(node)
-        return res[n]
+        def generate(start, end):
+            if start > end:
+                return [None, ]
 
-    def clone(self, n, offset):
-        if not n: return None
+            all_Trees = []
+            for i in range(start, end + 1):
+                left = generate(start, i - 1)
+                right = generate(i + 1, end)
 
-        node = TreeNode(n.val + offset)
-        node.left = self.clone(n.left, offset)
-        node.right = self.clone(n.val, offset)
+                for l in left:
+                    for r in right:
+                        cur_Tree = TreeNode(i)
+                        cur_Tree.left = l
+                        cur_Tree.right = r
+                        all_Trees.append(cur_Tree)
 
-        return node
+            return all_Trees
+
+        return generate(1, n) if n else []
