@@ -6,6 +6,7 @@ class Solution:
         step = 0
         visited = set()
         while queue:
+            print(queue)
             step += 1
             l = len(queue)
             for _ in range(l):
@@ -18,3 +19,7 @@ class Solution:
                         visited.add(diff)
                         queue.appendleft(diff)
         return step
+
+
+t = Solution()
+t.numSquares(7079)
